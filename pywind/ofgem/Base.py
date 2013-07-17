@@ -189,6 +189,11 @@ class OfgemForm(object):
                 if label is None:
                     label = tds[i].xpath('span//font')[0].text
                 _id = tds[i + 1].xpath('span')[0].get('id')
+                
+                if label == 'Accreditation No:':
+                    _id2 = tds[i + 1].xpath('span//font')[0].getchildren()[1].get('id')
+                    self.field_labels[_id2.replace('_', '$')] = 'Accreditation Use:'
+                    
                 if _id is None:
                     _id = tds[i + 1].xpath('span//font')[0].getchildren()[0].get('id')
                 if _id is not None:
